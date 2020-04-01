@@ -8,16 +8,21 @@ using UnityEngine.UI;
 public class BluetoothManager : MonoBehaviour
 {
     private BluetoothHelper helper;
-    private string deviceName;
+    public string deviceName = "ASTRA_K_BT_SERIAL";
 
+    [Tooltip("To enable or disable the bluetooth conection. " +
+        "Make sure it's true when build!")]
     public bool connectBT;
+
     public Text exT;
-    public Text msgT;
+    public Text debbugerMsg;
 
     // Start is called before the first frame update
     void Start()
     {
-        deviceName = "ASTRA_K_BT_SERIAL";
+        debbugerMsg.text = "Device name: " + deviceName + "; ";
+        debbugerMsg.text += "Looking for a connection: " + connectBT + "; ";
+        
         if(connectBT == true)
         {
             try
@@ -33,57 +38,44 @@ public class BluetoothManager : MonoBehaviour
                 {
                     helper.Connect();
                 }
-                msgT.text += " BT connected"; 
+
+                debbugerMsg.text += "Bluetooth connected: yes!"; 
             }
             catch (BluetoothHelper.BlueToothNotEnabledException ex)
             {
                 Debug.LogError("Excetion founded in Btmagaer: " + ex);
                 exT.text += " " + ex;
+                debbugerMsg.text += "Bluetooth connected: No!";
             }
             catch (BluetoothHelper.BlueToothNotReadyException ex)
             {
                 Debug.LogError("Excetion founded in Btmagaer: " + ex);
                 exT.text += " " + ex;
+                debbugerMsg.text += "Bluetooth connected: No!";
             }
             catch (BluetoothHelper.BlueToothNotSupportedException ex)
             {
                 Debug.LogError("Excetion founded in Btmagaer: " + ex);
                 exT.text += " " + ex;
+                debbugerMsg.text += "Bluetooth connected: No!";
             }
             catch (BluetoothHelper.BlueToothPermissionNotGrantedException ex)
             {
                 Debug.LogError("Excetion founded in Btmagaer: " + ex);
                 exT.text += " " + ex;
+                debbugerMsg.text += "Bluetooth connected: No!";
             }
         }
-        
     }
 
     void OnConnected()
     {
         helper.StartListening();
-
-        helper.SendData("Flash");
     }
 
     void OnConnFailed()
     {
         throw new NotImplementedException();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(connectBT == true)
-        {
-            if (helper.Available)
-            {
-                string msg = helper.Read(); //msg recived from arduino
-
-                msgT.text += " " + msg;
-            }
-        }
-        
     }
 
     private void OnDestroy()
