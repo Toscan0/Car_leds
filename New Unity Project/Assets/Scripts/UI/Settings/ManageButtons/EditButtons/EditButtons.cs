@@ -38,7 +38,7 @@ public class EditButtons : MonoBehaviour
         * TODO: Not Working
         */
         string id = bp.GetID();
-        string text = bp.GetText();
+        string text = bp.GetMsg();
 
         inputID.text = id;
         inputText.text = "....";
@@ -50,7 +50,7 @@ public class EditButtons : MonoBehaviour
     {
         Button buttonChosen = buttons[buttonToEdit];
 
-        buttonChosen.GetComponent<ButtonProperties>().SetText(s);
+        buttonChosen.GetComponent<ButtonProperties>().SetMsg(s);
     }
 
     public void SetID(string s)
