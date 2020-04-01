@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class BluetoothManager : MonoBehaviour
 {
     private BluetoothHelper helper;
-    public string deviceName = "ASTRA_K_BT_SERIAL";
+    public string deviceName = "ASTRA_K_BT_SERIAL"; //ASTRA_K_LED -> BLE 
 
     [Tooltip("To enable or disable the bluetooth conection. " +
         "Make sure it's true when build!")]
