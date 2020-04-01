@@ -33,6 +33,7 @@ public class BluetoothManager : MonoBehaviour
                 {
                     helper.Connect();
                 }
+                msgT.text += " BT connected"; 
             }
             catch (BluetoothHelper.BlueToothNotEnabledException ex)
             {
