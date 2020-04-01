@@ -10,6 +10,15 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 
+New Unity Project/[Ll]ibrary/
+New Unity Project/[Tt]emp/
+New Unity Project/[Oo]bj/
+New Unity Project/[Bb]uild/
+New Unity Project/[Bb]uilds/
+New Unity Project/[Ll]ogs/
+New Unity Project/[Mm]emoryCaptures/
+
+
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
