@@ -8,8 +8,8 @@ public class EditButtons : MonoBehaviour
 {
     public Button[] buttons;
 
-    public Text inputID;
-    public Text inputText;
+    public InputField inputID;
+    public InputField inputText;
 
     private int buttonToEdit = 0;
 
@@ -22,9 +22,6 @@ public class EditButtons : MonoBehaviour
     {
         buttonToEdit = val;
 
-        //inputID.text = "";
-        //inputText.text = "";
-
         PopulateEditUI();
     }
 
@@ -34,19 +31,12 @@ public class EditButtons : MonoBehaviour
 
         ButtonProperties bp = buttonChosen.GetComponent<ButtonProperties>();
 
-        /*
-        * TODO: Not Working
-        */
-        string id = bp.GetID();
-        string text = bp.GetMsg();
+        inputID.text = bp.GetID();
+        inputText.text = bp.GetMsg();
 
-        inputID.text = id;
-        inputText.text = "....";
-
-        Debug.Log(id + " ** " + text);
     }
 
-    public void SetText(string s)
+    public void SetMsg(string s)
     {
         Button buttonChosen = buttons[buttonToEdit];
 
