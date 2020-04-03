@@ -43,6 +43,9 @@ public class BluetoothManager : MonoBehaviour
 
     private void TryToConnect()
     {
+        // Get saved changes, or the default value
+        deviceName = PlayerPrefs.GetString("DeviceName", deviceName);
+
         debbugerMsg.text = "Device name: " + deviceName + "; ";
         debbugerMsg.text += "Looking for a connection: " + connectBT + "; ";
 
@@ -100,6 +103,11 @@ public class BluetoothManager : MonoBehaviour
     {
         deviceName = s;
 
+
+        //Save changes in Mobile
+        PlayerPrefs.SetString("DeviceName", deviceName);
+
+        // Turn on the looking for connection
         connectBT = true;
         TryToConnect();
     }

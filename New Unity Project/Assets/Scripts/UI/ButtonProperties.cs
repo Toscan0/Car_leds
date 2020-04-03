@@ -17,7 +17,8 @@ public class ButtonProperties : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        buttonText.text = ID;
+        // Get saved changes, or the default value
+        buttonText.text = PlayerPrefs.GetString(gameObject.name + "ID", ID);
     }
 
     public string GetMsg()
@@ -28,6 +29,9 @@ public class ButtonProperties : MonoBehaviour
     public void SetMsg(string s)
     {
         msg = s;
+
+        //Save changes in Mobile
+        PlayerPrefs.SetString(gameObject.name + "MSG", msg);
     }
 
     public string GetID()
@@ -40,6 +44,9 @@ public class ButtonProperties : MonoBehaviour
         ID = s;
 
         buttonText.text = ID;
+
+        //Save changes in Mobile
+        PlayerPrefs.SetString(gameObject.name + "ID", ID);
     }
 
     public void ButtonClick()
