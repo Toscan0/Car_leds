@@ -15,16 +15,35 @@ public class DataReceived : MonoBehaviour
 
     void Start()
     {
-        helper = btManager.GetBluetoothHelper();
         text = gameObject.GetComponent<Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (btManager.connectBT)
+        if (btManager.connectBT == true)
         {
+            //Read from bluetooth
+            helper = btManager.GetBluetoothHelper();
             outMsg = helper.Read();
+
+            ParseMsg();
+        }
+    }
+
+    private void ParseMsg()
+    {
+        int indexWhiteSpace;
+
+        outMsg = outMsg.Trim();
+
+        if (outMsg != "")
+        {
+            //first white space fouded, that will be betwen two words, thx to the Trim function
+            indexWhiteSpace = outMsg.IndexOf(" "); 
+
+            outMsg = outMsg.Remove(0, indexWhiteSpace);
+
             UpdateText();
         }
     }
