@@ -58,14 +58,4 @@ public class ButtonProperties : MonoBehaviour
         }
         Debug.Log(msg);
     }
-
-    public void ResetButton()
-    {
-        /*
-         *  TODO: FIX THIS
-         */
-        SetID("BUTTON_ID");
-        SetMsg("BUTTON_MSG");
-
-    }
 }

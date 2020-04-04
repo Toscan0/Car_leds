@@ -8,8 +8,7 @@ using UnityEngine.UI;
 public class BluetoothManager : MonoBehaviour
 {
     private BluetoothHelper helper;
-    private const string DEVICE_NAME = "ASTRA_K_BT_SERIAL";//ASTRA_K_LED -> BLE , Arduino -> ASTRA_K_BT_SERIAL
-    private string deviceName; 
+    private string deviceName = "ASTRA_K_BT_SERIAL"; //ASTRA_K_LED -> BLE , Arduino -> ASTRA_K_BT_SERIAL
 
     [Tooltip("To enable or disable the bluetooth conection. " +
         "Make sure it's true when build!")]
@@ -45,7 +44,7 @@ public class BluetoothManager : MonoBehaviour
     private void TryToConnect()
     {
         // Get saved changes, or the default value
-        deviceName = PlayerPrefs.GetString("DeviceName", DEVICE_NAME);
+        deviceName = PlayerPrefs.GetString("DeviceName", deviceName);
 
         debbugerMsg.text = "Device name: " + deviceName + "; ";
         debbugerMsg.text += "Looking for a connection: " + connectBT + "; ";
@@ -104,20 +103,12 @@ public class BluetoothManager : MonoBehaviour
     {
         deviceName = s;
 
+
         //Save changes in Mobile
         PlayerPrefs.SetString("DeviceName", deviceName);
-
-        /*
-         * TODO: Disconeect the bt coneection
-         */
 
         // Turn on the looking for connection
         connectBT = true;
         TryToConnect();
-    }
-
-    public void ResetDeviceName()
-    {
-        SetDeviceName(DEVICE_NAME);
     }
 }
