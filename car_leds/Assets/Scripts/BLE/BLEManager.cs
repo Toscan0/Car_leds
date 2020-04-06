@@ -1,13 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using ArduinoBluetoothAPI;
-using System;
+using UnityEngine.UI;
+using UnityEngine;
 
 public class BLEManager : MonoBehaviour
 {
+    public Text msg;
+    public Text exception;
+
     private BluetoothHelper bluetoothHelper;
     private float timer;
+
     void Start()
     {
         timer = 0;
@@ -53,7 +58,7 @@ public class BLEManager : MonoBehaviour
             bluetoothHelper.ScanNearbyDevices();
 
         }catch(Exception ex){
-            Debug.Log(ex.Message);
+            Debug.LogError(ex.Message);
         }
     }
 
