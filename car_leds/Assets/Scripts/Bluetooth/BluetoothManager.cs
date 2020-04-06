@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class BluetoothManager : MonoBehaviour
 {
     private BluetoothHelper helper;
+    [SerializeField]
+    [Tooltip("The name of the arduino")]
     private string deviceName = "ASTRA_K_BT_SERIAL"; //ASTRA_K_LED -> BLE , Arduino -> ASTRA_K_BT_SERIAL
 
     [Tooltip("To enable or disable the bluetooth conection. " +
