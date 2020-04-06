@@ -18,6 +18,13 @@ New Unity Project/[Bb]uilds/
 New Unity Project/[Ll]ogs/
 New Unity Project/[Mm]emoryCaptures/
 
+car_leds/[Ll]ibrary/
+car_leds/[Tt]emp/
+car_leds/[Oo]bj/
+car_leds/[Bb]uild/
+car_leds/[Bb]uilds/
+car_leds/[Ll]ogs/
+car_leds/[Mm]emoryCaptures/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
