@@ -119,7 +119,7 @@ void setup() {
 
   // Start advertising
   pServer->getAdvertising()->start();
-  Serial.println("Waiting a client connection to notify111111111...");
+  Serial.println("BLE: Waiting a client connection to notify...");
 }
 
 void loop() {
