@@ -28,7 +28,7 @@ BLECharacteristic *pCharacteristic;
 bool deviceConnected = false;
 float txValue = 0;
 const int readPin = 32; // Use GPIO number. See ESP32 board pinouts
-const int LED = 0; // Could be different depending on the dev board. I used the DOIT ESP32 dev board.
+const int LED = 22; // Could be different depending on the dev board. I used the DOIT ESP32 dev board.
 String inString = "";
 
 //std::string rxValue; // Could also make this a global var to access it in loop()
@@ -119,7 +119,7 @@ void setup() {
 
   // Start advertising
   pServer->getAdvertising()->start();
-  Serial.println("Waiting a client connection to notify...");
+  Serial.println("Waiting a client connection to notify111111111...");
 }
 
 void loop() {
