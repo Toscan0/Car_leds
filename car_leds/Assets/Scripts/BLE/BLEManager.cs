@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class BLEManager : MonoBehaviour
 {
+    public DataReceived dataReceived;
+
     public Text msg;
     public Text exception;
 
@@ -118,10 +120,13 @@ public class BLEManager : MonoBehaviour
                     msg.text += "Characteristic name: " + characteristicName + " ";
                 };
 
+                // msg recieved
                 bluetoothHelper.OnCharacteristicChanged += (value, characteristic) =>
                 {
                     msg.text += "Characteristic name: " + characteristic.getName() + " "
                     + System.Text.Encoding.ASCII.GetString(value) + " ";
+
+                    dataReceived.UpdateText(System.Text.Encoding.ASCII.GetString(value)); 
                 };
 
                 //  UART service UUID

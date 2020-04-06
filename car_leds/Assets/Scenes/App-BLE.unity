@@ -2892,12 +2892,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 824642518}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1fe2c822316b1f4d93fc9f6469d376d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btManager: {fileID: 0}
 --- !u!1 &840342903
 GameObject:
   m_ObjectHideFlags: 0
@@ -3373,7 +3372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &941548168
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7622,6 +7621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d857663ff4daa244eae17997cf5b7ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataReceived: {fileID: 824642522}
   msg: {fileID: 643669815}
   exception: {fileID: 1237507144}
   connectBLE: 1
