@@ -23,8 +23,9 @@ public class BLEManager : MonoBehaviour
     }
 
     private void OnScanEnded(LinkedList<BluetoothDevice> devices){
-        Debug.Log("FOund " + devices.Count);
-        if(devices.Count == 0){
+        msg.text += "Found " + devices.Count + " ";
+
+        if (devices.Count == 0){
             bluetoothHelper.ScanNearbyDevices();
             return;
         }
@@ -32,12 +33,11 @@ public class BLEManager : MonoBehaviour
         try
         {
             bluetoothHelper.setDeviceName("ASTRA_K_LED_BLE");
-            // bluetoothHelper.setDeviceName("HC-08");
             bluetoothHelper.Connect();
-            Debug.Log("Connecting");
+
+            msg.text += "Connecting ";
         }catch(Exception ex)
         {
-            Debug.Log(ex.Message);
             exception.text += ex + " ";
         }
 
@@ -63,23 +63,18 @@ public class BLEManager : MonoBehaviour
     }
 
     public void MySendData(string s){
-        // Debug.Log("Sending");
-        // BluetoothHelperCharacteristic ch = new BluetoothHelperCharacteristic("FFE1");
-        // ch.setService("FFE0"); //this line is mandatory!!!
-        // bluetoothHelper.WriteCharacteristic(ch, new byte[]{0x44, 0x55, 0xff});
+        msg.text += "Sending ";
 
-        Debug.Log("Sending");
-        msg.text += " --- ";
+        //  UUID_RX -> to write on arduino
         BluetoothHelperCharacteristic ch = new BluetoothHelperCharacteristic("6E400002-B5A3-F393-E0A9-E50E24DCCA9E");
+        //  UART service UUID
         ch.setService("6E400001-B5A3-F393-E0A9-E50E24DCCA9E"); //this line is mandatory!!!
-        bluetoothHelper.WriteCharacteristic(ch, s); //string: 10001000 is this binary? no, as string.
-
-        msg.text += " SENDIG ";
+        bluetoothHelper.WriteCharacteristic(ch, s); //send as string
     }
 
     void Read(){
-        BluetoothHelperCharacteristic ch = new BluetoothHelperCharacteristic("2A24");
-        ch.setService("180A");//this line is mandatory!!!
+        BluetoothHelperCharacteristic ch = new BluetoothHelperCharacteristic("6E400003-B5A3-F393-E0A9-E50E24DCCA9E");
+        ch.setService("6E400001-B5A3-F393-E0A9-E50E24DCCA9E");//this line is mandatory!!!
 
         bluetoothHelper.ReadCharacteristic(ch);
         //Debug.Log(System.Text.Encoding.ASCII.GetString(x));
@@ -87,62 +82,58 @@ public class BLEManager : MonoBehaviour
 
     private void TryToConnect()
     {
-        if(connectBLE == true)
+        msg.text = "App started ";
+        msg.text = "Search for BLE connection: " + connectBLE + " ";
+        if (connectBLE == true)
         {
             timer = 0;
             try
             {
-                Debug.Log("HI");
-                msg.text = "HI ";
+                msg.text += "Trying... ";
+
                 BluetoothHelper.BLE = true;  //use Bluetooth Low Energy Technology
                 bluetoothHelper = BluetoothHelper.GetInstance("TEST");
+
                 Debug.Log(bluetoothHelper.getDeviceName());
-                msg.text += bluetoothHelper.getDeviceName() + " ";
+                msg.text += "Device name: " + bluetoothHelper.getDeviceName() + " ";
+
                 bluetoothHelper.OnConnected += () => {
-                    Debug.Log("Connected");
+
                     msg.text += "Connected ";
-                    //SendData();
                 };
+
                 bluetoothHelper.OnConnectionFailed += () => {
-                    Debug.Log("Connection failed");
                     msg.text += "Connection failed ";
                 };
+
                 bluetoothHelper.OnScanEnded += OnScanEnded;
+
                 bluetoothHelper.OnServiceNotFound += (serviceName) =>
                 {
-                    Debug.Log(serviceName);
-                    msg.text += serviceName + " ";
+                    msg.text += "Service name: " + serviceName + " ";
                 };
+
                 bluetoothHelper.OnCharacteristicNotFound += (serviceName, characteristicName) =>
                 {
-                    Debug.Log(characteristicName);
-                    msg.text += characteristicName + " ";
+                    msg.text += "Characteristic name: " + characteristicName + " ";
                 };
+
                 bluetoothHelper.OnCharacteristicChanged += (value, characteristic) =>
                 {
-                    Debug.Log(characteristic.getName());
-                    Debug.Log(System.Text.Encoding.ASCII.GetString(value));
-                    msg.text += characteristic.getName() + " " + System.Text.Encoding.ASCII.GetString(value) + " ";
+                    msg.text += "Characteristic name: " + characteristic.getName() + " "
+                    + System.Text.Encoding.ASCII.GetString(value) + " ";
                 };
 
-                // BluetoothHelperService service = new BluetoothHelperService("FFE0");
-                // service.addCharacteristic(new BluetoothHelperCharacteristic("FFE1"));
-                // BluetoothHelperService service2 = new BluetoothHelperService("180A");
-                // service.addCharacteristic(new BluetoothHelperCharacteristic("2A24"));
-                // bluetoothHelper.Subscribe(service);
-                // bluetoothHelper.Subscribe(service2);
-                // bluetoothHelper.ScanNearbyDevices();
-
+                //  UART service UUID
                 BluetoothHelperService service = new BluetoothHelperService("6E400001-B5A3-F393-E0A9-E50E24DCCA9E");
+                // UUID_TX -> recive from arduino
                 service.addCharacteristic(new BluetoothHelperCharacteristic("6E400003-B5A3-F393-E0A9-E50E24DCCA9E"));
                 bluetoothHelper.Subscribe(service);
-                //bluetoothHelper.Subscribe(service2);
                 bluetoothHelper.ScanNearbyDevices();
 
             }
             catch (Exception ex)
             {
-                Debug.LogError(ex.Message);
                 exception.text += ex + " ";
             }
         }

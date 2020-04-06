@@ -55,15 +55,18 @@ class MyServerCallbacks: public BLEServerCallbacks {
 
 class MyCallbacks: public BLECharacteristicCallbacks {
     void onWrite(BLECharacteristic *pCharacteristic) {
-      std::string rxValue = pCharacteristic->getValue();
-
+     std::string rxValue = pCharacteristic->getValue();
+     txValue[0]='o';
+      txValue[1]='l';
+      txValue[2]='a';
+      
       if (rxValue.length() > 0) {
-        Serial.println("*********");
+        Serial.println("***");
         Serial.print("Received Value: ");
         inString="";
         for (int i = 0; i < rxValue.length(); i++){
           Serial.print(rxValue[i]);
-          txValue[i]=rxValue[i];
+          txValue[i+3]=rxValue[i];
           inString += (char)rxValue[i];
         }
         Serial.println();
@@ -72,9 +75,9 @@ class MyCallbacks: public BLECharacteristicCallbacks {
         Serial.print("pwm");
         Serial.println(pwm_led);
         ledcWrite(1, pwm_led);
-        Serial.println("*********\n\n");
+        Serial.println("***\n\n");
 
-        pTxCharacteristic->setValue(txValue,rxValue.length());
+        pTxCharacteristic->setValue(txValue,rxValue.length()+3);
         pTxCharacteristic->notify();
 //        txValue++;
       }
