@@ -920,7 +920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85905f0951be2b408c488646097206b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btManager: {fileID: 0}
+  BLEManager: {fileID: 1795442168}
   text: {fileID: 1712441620}
 --- !u!1 &438311114
 GameObject:
@@ -4661,7 +4661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d15c837c7b611488824e56c3ea9edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btManager: {fileID: 0}
+  BLEManager: {fileID: 1795442168}
 --- !u!1 &1206152559
 GameObject:
   m_ObjectHideFlags: 0
