@@ -87,61 +87,64 @@ public class BLEManager : MonoBehaviour
 
     private void TryToConnect()
     {
-        timer = 0;
-        try
+        if(connectBLE == true)
         {
-            Debug.Log("HI");
-            msg.text = "HI ";
-            BluetoothHelper.BLE = true;  //use Bluetooth Low Energy Technology
-            bluetoothHelper = BluetoothHelper.GetInstance("TEST");
-            Debug.Log(bluetoothHelper.getDeviceName());
-            msg.text += bluetoothHelper.getDeviceName() + " ";
-            bluetoothHelper.OnConnected += () => {
-                Debug.Log("Connected");
-                msg.text += "Connected ";
-                //SendData();
-            };
-            bluetoothHelper.OnConnectionFailed += () => {
-                Debug.Log("Connection failed");
-                msg.text += "Connection failed ";
-            };
-            bluetoothHelper.OnScanEnded += OnScanEnded;
-            bluetoothHelper.OnServiceNotFound += (serviceName) =>
+            timer = 0;
+            try
             {
-                Debug.Log(serviceName);
-                msg.text += serviceName + " ";
-            };
-            bluetoothHelper.OnCharacteristicNotFound += (serviceName, characteristicName) =>
+                Debug.Log("HI");
+                msg.text = "HI ";
+                BluetoothHelper.BLE = true;  //use Bluetooth Low Energy Technology
+                bluetoothHelper = BluetoothHelper.GetInstance("TEST");
+                Debug.Log(bluetoothHelper.getDeviceName());
+                msg.text += bluetoothHelper.getDeviceName() + " ";
+                bluetoothHelper.OnConnected += () => {
+                    Debug.Log("Connected");
+                    msg.text += "Connected ";
+                    //SendData();
+                };
+                bluetoothHelper.OnConnectionFailed += () => {
+                    Debug.Log("Connection failed");
+                    msg.text += "Connection failed ";
+                };
+                bluetoothHelper.OnScanEnded += OnScanEnded;
+                bluetoothHelper.OnServiceNotFound += (serviceName) =>
+                {
+                    Debug.Log(serviceName);
+                    msg.text += serviceName + " ";
+                };
+                bluetoothHelper.OnCharacteristicNotFound += (serviceName, characteristicName) =>
+                {
+                    Debug.Log(characteristicName);
+                    msg.text += characteristicName + " ";
+                };
+                bluetoothHelper.OnCharacteristicChanged += (value, characteristic) =>
+                {
+                    Debug.Log(characteristic.getName());
+                    Debug.Log(System.Text.Encoding.ASCII.GetString(value));
+                    msg.text += characteristic.getName() + " " + System.Text.Encoding.ASCII.GetString(value) + " ";
+                };
+
+                // BluetoothHelperService service = new BluetoothHelperService("FFE0");
+                // service.addCharacteristic(new BluetoothHelperCharacteristic("FFE1"));
+                // BluetoothHelperService service2 = new BluetoothHelperService("180A");
+                // service.addCharacteristic(new BluetoothHelperCharacteristic("2A24"));
+                // bluetoothHelper.Subscribe(service);
+                // bluetoothHelper.Subscribe(service2);
+                // bluetoothHelper.ScanNearbyDevices();
+
+                BluetoothHelperService service = new BluetoothHelperService("6E400001-B5A3-F393-E0A9-E50E24DCCA9E");
+                service.addCharacteristic(new BluetoothHelperCharacteristic("6E400003-B5A3-F393-E0A9-E50E24DCCA9E"));
+                bluetoothHelper.Subscribe(service);
+                //bluetoothHelper.Subscribe(service2);
+                bluetoothHelper.ScanNearbyDevices();
+
+            }
+            catch (Exception ex)
             {
-                Debug.Log(characteristicName);
-                msg.text += characteristicName + " ";
-            };
-            bluetoothHelper.OnCharacteristicChanged += (value, characteristic) =>
-            {
-                Debug.Log(characteristic.getName());
-                Debug.Log(System.Text.Encoding.ASCII.GetString(value));
-                msg.text += characteristic.getName() + " " + System.Text.Encoding.ASCII.GetString(value) + " ";
-            };
-
-            // BluetoothHelperService service = new BluetoothHelperService("FFE0");
-            // service.addCharacteristic(new BluetoothHelperCharacteristic("FFE1"));
-            // BluetoothHelperService service2 = new BluetoothHelperService("180A");
-            // service.addCharacteristic(new BluetoothHelperCharacteristic("2A24"));
-            // bluetoothHelper.Subscribe(service);
-            // bluetoothHelper.Subscribe(service2);
-            // bluetoothHelper.ScanNearbyDevices();
-
-            BluetoothHelperService service = new BluetoothHelperService("6E400001-B5A3-F393-E0A9-E50E24DCCA9E");
-            service.addCharacteristic(new BluetoothHelperCharacteristic("6E400003-B5A3-F393-E0A9-E50E24DCCA9E"));
-            bluetoothHelper.Subscribe(service);
-            //bluetoothHelper.Subscribe(service2);
-            bluetoothHelper.ScanNearbyDevices();
-
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError(ex.Message);
-            exception.text += ex + " ";
+                Debug.LogError(ex.Message);
+                exception.text += ex + " ";
+            }
         }
     }
 
