@@ -7,12 +7,10 @@ using UnityEngine;
 public class ButtonProperties : MonoBehaviour
 {
     public Text buttonText;
-    public BluetoothManager btManager;
+    public BLEManager BLEManager;
 
     [SerializeField] private string ID; //THe ID is what is showed to the user
     [SerializeField] private string msg;
-
-    private BluetoothHelper helper;
 
     // Start is called before the first frame update
     void Start()
@@ -51,11 +49,13 @@ public class ButtonProperties : MonoBehaviour
 
     public void ButtonClick()
     {
-        if(btManager.connectBT == true)
+        if(BLEManager.connectBLE == true)
         {
-            helper = btManager.GetBluetoothHelper(); //refact this to start
-            helper.SendData(msg);
+            BLEManager.MySendData(msg);
         }
+
         Debug.Log(msg);
     }
+
+
 }

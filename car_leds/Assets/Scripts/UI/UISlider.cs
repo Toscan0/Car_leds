@@ -6,10 +6,9 @@ using UnityEngine;
 
 public class UISlider : MonoBehaviour
 {
-    public BluetoothManager btManager;
+    public BLEManager BLEManager;
     public Text text;
 
-    private BluetoothHelper helper;
 
     private void Start()
     {
@@ -20,11 +19,11 @@ public class UISlider : MonoBehaviour
     {
         string value = n.ToString();
 
-        if (btManager.connectBT == true)
+        if (BLEManager.connectBLE == true)
         {
-            helper = btManager.GetBluetoothHelper(); //refact this to start
-            helper.SendData(value);
+            BLEManager.MySendData(value);
         }
+
         Debug.Log(n);
         text.text = value;
     }

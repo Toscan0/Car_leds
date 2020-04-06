@@ -10,6 +10,10 @@ public class BLEManager : MonoBehaviour
     public Text msg;
     public Text exception;
 
+    [Tooltip("To enable or disable the BLE conection. " +
+        "Make sure it's true when build!")]
+    public bool connectBLE;
+
     private BluetoothHelper bluetoothHelper;
     private float timer;
 
@@ -55,10 +59,10 @@ public class BLEManager : MonoBehaviour
         if(timer < 5)
             return;
         timer = 0;
-        SendData();
+        //SendData();
     }
 
-    void SendData(){
+    public void MySendData(string s){
         // Debug.Log("Sending");
         // BluetoothHelperCharacteristic ch = new BluetoothHelperCharacteristic("FFE1");
         // ch.setService("FFE0"); //this line is mandatory!!!
@@ -68,7 +72,7 @@ public class BLEManager : MonoBehaviour
         msg.text += " --- ";
         BluetoothHelperCharacteristic ch = new BluetoothHelperCharacteristic("6E400002-B5A3-F393-E0A9-E50E24DCCA9E");
         ch.setService("6E400001-B5A3-F393-E0A9-E50E24DCCA9E"); //this line is mandatory!!!
-        bluetoothHelper.WriteCharacteristic(ch, "128"); //string: 10001000 is this binary? no, as string.
+        bluetoothHelper.WriteCharacteristic(ch, s); //string: 10001000 is this binary? no, as string.
 
         msg.text += " SENDIG ";
     }
@@ -95,7 +99,7 @@ public class BLEManager : MonoBehaviour
             bluetoothHelper.OnConnected += () => {
                 Debug.Log("Connected");
                 msg.text += "Connected ";
-                SendData();
+                //SendData();
             };
             bluetoothHelper.OnConnectionFailed += () => {
                 Debug.Log("Connection failed");
@@ -139,5 +143,10 @@ public class BLEManager : MonoBehaviour
             Debug.LogError(ex.Message);
             exception.text += ex + " ";
         }
+    }
+
+    public BluetoothHelper GetBluetoothHelper()
+    {
+        return bluetoothHelper;
     }
 }

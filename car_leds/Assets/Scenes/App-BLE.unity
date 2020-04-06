@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonText: {fileID: 1063714988}
-  btManager: {fileID: 0}
+  BLEManager: {fileID: 1795442168}
   ID: 127
   msg: 127
 --- !u!1 &141896739
@@ -1711,7 +1711,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1968,7 +1968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonText: {fileID: 902619072}
-  btManager: {fileID: 0}
+  BLEManager: {fileID: 1795442168}
   ID: 64
   msg: 64
 --- !u!1 &570323258
@@ -1986,7 +1986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &570323259
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3373,7 +3373,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &941548168
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3755,7 +3755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonText: {fileID: 563853636}
-  btManager: {fileID: 0}
+  BLEManager: {fileID: 1795442168}
   ID: 0
   msg: 0
 --- !u!1 &1012109305
@@ -4122,7 +4122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonText: {fileID: 1720366157}
-  btManager: {fileID: 0}
+  BLEManager: {fileID: 1795442168}
   ID: Button
   msg: Button
 --- !u!1 &1109938938
@@ -4801,7 +4801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonText: {fileID: 584954478}
-  btManager: {fileID: 0}
+  BLEManager: {fileID: 1795442168}
   ID: 255
   msg: 255
 --- !u!1 &1210468166
@@ -5429,7 +5429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonText: {fileID: 1774033277}
-  btManager: {fileID: 0}
+  BLEManager: {fileID: 1795442168}
   ID: Ota
   msg: Ota
 --- !u!1 &1347753982
@@ -5720,7 +5720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonText: {fileID: 649372601}
-  btManager: {fileID: 0}
+  BLEManager: {fileID: 1795442168}
   ID: Button
   msg: Button
 --- !u!1 &1441167536
@@ -7624,6 +7624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   msg: {fileID: 643669815}
   exception: {fileID: 1237507144}
+  connectBLE: 1
 --- !u!4 &1795442169
 Transform:
   m_ObjectHideFlags: 0
@@ -8348,7 +8349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonText: {fileID: 1536540951}
-  btManager: {fileID: 0}
+  BLEManager: {fileID: 1795442168}
   ID: 190
   msg: 190
 --- !u!1 &2098042644
@@ -8613,7 +8614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonText: {fileID: 1761462719}
-  btManager: {fileID: 0}
+  BLEManager: {fileID: 1795442168}
   ID: Button
   msg: Button
 --- !u!1 &2117977216
@@ -8728,7 +8729,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 12.11, y: 0}
   m_SizeDelta: {x: 44.22, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

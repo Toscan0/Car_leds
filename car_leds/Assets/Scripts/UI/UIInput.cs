@@ -6,17 +6,14 @@ using UnityEngine;
 public class UIInput : MonoBehaviour
 {
 
-    public BluetoothManager btManager;
-
-    private BluetoothHelper helper;
+    public BLEManager BLEManager;
 
     public void InputChanged(string s)
     {
 
-        if (btManager.connectBT == true)
+        if (BLEManager.connectBLE == true)
         {
-            helper = btManager.GetBluetoothHelper(); //refact this to start
-            helper.SendData(s);
+            BLEManager.MySendData(s);
         }
 
         Debug.Log(s);
