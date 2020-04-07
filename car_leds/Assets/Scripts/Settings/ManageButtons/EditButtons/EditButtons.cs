@@ -29,7 +29,7 @@ public class EditButtons : MonoBehaviour
     {
         Button buttonChosen = buttons[buttonToEdit];
 
-        UIButton utton = buttonChosen.GetComponent<UIButton>();
+        UIButton bp = buttonChosen.GetComponent<UIButton>();
 
         inputID.text = bp.GetID();
         inputText.text = bp.GetMsg();
