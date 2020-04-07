@@ -29,7 +29,7 @@ public class EditButtons : MonoBehaviour
     {
         Button buttonChosen = buttons[buttonToEdit];
 
-        ButtonProperties bp = buttonChosen.GetComponent<ButtonProperties>();
+        UIButton bp = buttonChosen.GetComponent<UIButton>();
 
         inputID.text = bp.GetID();
         inputText.text = bp.GetMsg();
@@ -40,13 +40,13 @@ public class EditButtons : MonoBehaviour
     {
         Button buttonChosen = buttons[buttonToEdit];
 
-        buttonChosen.GetComponent<ButtonProperties>().SetMsg(s);
+        buttonChosen.GetComponent<UIButton>().SetMsg(s);
     }
 
     public void SetID(string s)
     {
         Button buttonChosen = buttons[buttonToEdit];
 
-        buttonChosen.GetComponent<ButtonProperties>().SetID(s);
+        buttonChosen.GetComponent<UIButton>().SetID(s);
     }
 }
