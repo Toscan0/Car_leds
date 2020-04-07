@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class NumberOfButtons : MonoBehaviour
 {
-    public UnityEngine.UI.Button[] buttons;
+    public Button[] buttons;
     public Dropdown buttonsDropdown;
 
     private int numberOfButtons = 6;
