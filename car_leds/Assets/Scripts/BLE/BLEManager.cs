@@ -19,6 +19,14 @@ public class BLEManager : MonoBehaviour
     private BluetoothHelper bluetoothHelper;
     private float timer;
 
+    // UART service UUID
+    private const string UUID = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E";
+    // UUID_RX -> to write on arduino
+    private const string UUID_RX = "6E400002-B5A3-F393-E0A9-E50E24DCCA9E";
+    // UUID_TX -> recive from arduino
+    private const string UUID_TX = "6E400003-B5A3-F393-E0A9-E50E24DCCA9E";
+    
+
     void Start()
     {
         TryToConnect();
@@ -67,16 +75,15 @@ public class BLEManager : MonoBehaviour
     public void MySendData(string s){
         msg.text += "Sending ";
 
-        //  UUID_RX -> to write on arduino
-        BluetoothHelperCharacteristic ch = new BluetoothHelperCharacteristic("6E400002-B5A3-F393-E0A9-E50E24DCCA9E");
-        //  UART service UUID
-        ch.setService("6E400001-B5A3-F393-E0A9-E50E24DCCA9E"); //this line is mandatory!!!
+        BluetoothHelperCharacteristic ch = new BluetoothHelperCharacteristic(UUID_RX);
+        ch.setService(UUID); //this line is mandatory!!!
+
         bluetoothHelper.WriteCharacteristic(ch, s); //send as string
     }
 
     void Read(){
-        BluetoothHelperCharacteristic ch = new BluetoothHelperCharacteristic("6E400003-B5A3-F393-E0A9-E50E24DCCA9E");
-        ch.setService("6E400001-B5A3-F393-E0A9-E50E24DCCA9E");//this line is mandatory!!!
+        BluetoothHelperCharacteristic ch = new BluetoothHelperCharacteristic(UUID_TX);
+        ch.setService(UUID);//this line is mandatory!!!
 
         bluetoothHelper.ReadCharacteristic(ch);
         //Debug.Log(System.Text.Encoding.ASCII.GetString(x));
@@ -86,6 +93,7 @@ public class BLEManager : MonoBehaviour
     {
         msg.text = "App started ";
         msg.text = "Search for BLE connection: " + connectBLE + " ";
+
         if (connectBLE == true)
         {
             timer = 0;
@@ -129,10 +137,9 @@ public class BLEManager : MonoBehaviour
                     dataReceived.UpdateText(System.Text.Encoding.ASCII.GetString(value)); 
                 };
 
-                //  UART service UUID
-                BluetoothHelperService service = new BluetoothHelperService("6E400001-B5A3-F393-E0A9-E50E24DCCA9E");
-                // UUID_TX -> recive from arduino
-                service.addCharacteristic(new BluetoothHelperCharacteristic("6E400003-B5A3-F393-E0A9-E50E24DCCA9E"));
+                BluetoothHelperService service = new BluetoothHelperService(UUID);
+                service.addCharacteristic(new BluetoothHelperCharacteristic(UUID_TX));
+
                 bluetoothHelper.Subscribe(service);
                 bluetoothHelper.ScanNearbyDevices();
 
