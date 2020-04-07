@@ -24,7 +24,7 @@ public class UISlider : MonoBehaviour
             BLEManager.MySendData(value);
         }
 
-        Debug.Log(n);
+        //Debug.Log(n);
         text.text = value;
     }
 }

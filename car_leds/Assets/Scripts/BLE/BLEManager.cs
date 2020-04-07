@@ -17,18 +17,22 @@ public class BLEManager : MonoBehaviour
     public bool connectBLE;
 
     private BluetoothHelper bluetoothHelper;
-    private float timer;
+
+    private String queue;
+    private bool awatingMsg;
 
     // UART service UUID
     private const string UUID = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E";
-    // UUID_RX -> to write on arduino
+    // UUID_RX -> recive from arduino
     private const string UUID_RX = "6E400002-B5A3-F393-E0A9-E50E24DCCA9E";
-    // UUID_TX -> recive from arduino
+    // UUID_TX -> to write on arduino
     private const string UUID_TX = "6E400003-B5A3-F393-E0A9-E50E24DCCA9E";
     
 
     void Start()
     {
+        queue = "";
+        awatingMsg = false;
         TryToConnect();
     }
 
@@ -52,41 +56,64 @@ public class BLEManager : MonoBehaviour
         }
 
     }
-
+    
+     
     void OnDestroy()
     {
         if (bluetoothHelper != null)
             bluetoothHelper.Disconnect();
     }
+    
+    public void MySendData(string s){ 
+        // need to concatunate the string, because c# reoder strings to optimize things
 
-    void Update(){
-        if(bluetoothHelper == null)
-            return;
-        if(!bluetoothHelper.isConnected())
-            return;
-        timer += Time.deltaTime;
+        msg.text += "Trying to send ";
 
-        if(timer < 5)
-            return;
-        timer = 0;
-        //SendData();
+        queue += s + "|";
+
+        sendNext();
+        
+        //BluetoothHelperCharacteristic ch = new BluetoothHelperCharacteristic(UUID_RX);
+        //ch.setService(UUID); //this line is mandatory!!!
+
+        //bluetoothHelper.WriteCharacteristic(ch, s); //send as string
     }
 
-    public void MySendData(string s){
-        msg.text += "Sending ";
 
-        BluetoothHelperCharacteristic ch = new BluetoothHelperCharacteristic(UUID_RX);
-        ch.setService(UUID); //this line is mandatory!!!
+    private void sendNext()
+    {
 
-        bluetoothHelper.WriteCharacteristic(ch, s); //send as string
+        if (awatingMsg || bluetoothHelper == null)
+            return;
+
+        Debug.Log(queue);
+       
+        int x = queue.IndexOf('|');
+        if(x <= 0) 
+        {
+            queue = "";
+            return;
+        }
+        string msgg = queue.Substring(0, x);
+        queue = queue.Substring(x + 1);
+        awatingMsg = true;
+
+        msg.text += "Sending  " + msgg; 
+
+        bluetoothHelper.SendData(msgg);
     }
 
-    void Read(){
-        BluetoothHelperCharacteristic ch = new BluetoothHelperCharacteristic(UUID_TX);
-        ch.setService(UUID);//this line is mandatory!!!
+    private void BluetoothHelper_OnDataReceived()
+    {
+        awatingMsg = false;
+        //msg.text += "Characteristic name: " + characteristic.getName() + " "
+        //           + System.Text.Encoding.ASCII.GetString(value) + " ";
 
-        bluetoothHelper.ReadCharacteristic(ch);
-        //Debug.Log(System.Text.Encoding.ASCII.GetString(x));
+        dataReceived.UpdateText(bluetoothHelper.Read());
+
+        // send the next message only when the previous message response is received.
+        sendNext();
+        
     }
 
     private void TryToConnect()
@@ -96,13 +123,16 @@ public class BLEManager : MonoBehaviour
 
         if (connectBLE == true)
         {
-            timer = 0;
             try
             {
                 msg.text += "Trying... ";
 
+                awatingMsg = false;
+
                 BluetoothHelper.BLE = true;  //use Bluetooth Low Energy Technology
                 bluetoothHelper = BluetoothHelper.GetInstance("TEST");
+
+                bluetoothHelper.setTerminatorBasedStream("\n");
 
                 Debug.Log(bluetoothHelper.getDeviceName());
                 msg.text += "Device name: " + bluetoothHelper.getDeviceName() + " ";
@@ -110,6 +140,8 @@ public class BLEManager : MonoBehaviour
                 bluetoothHelper.OnConnected += () => {
 
                     msg.text += "Connected ";
+                    awatingMsg = false;
+                    bluetoothHelper.StartListening();
                 };
 
                 bluetoothHelper.OnConnectionFailed += () => {
@@ -118,31 +150,19 @@ public class BLEManager : MonoBehaviour
 
                 bluetoothHelper.OnScanEnded += OnScanEnded;
 
-                bluetoothHelper.OnServiceNotFound += (serviceName) =>
-                {
-                    msg.text += "Service name: " + serviceName + " ";
-                };
+                bluetoothHelper.OnDataReceived += BluetoothHelper_OnDataReceived;
 
-                bluetoothHelper.OnCharacteristicNotFound += (serviceName, characteristicName) =>
-                {
-                    msg.text += "Characteristic name: " + characteristicName + " ";
-                };
+                BluetoothHelperCharacteristic txC = new BluetoothHelperCharacteristic(UUID_TX);
+                txC.setService(UUID);
 
-                // msg recieved
-                bluetoothHelper.OnCharacteristicChanged += (value, characteristic) =>
-                {
-                    msg.text += "Characteristic name: " + characteristic.getName() + " "
-                    + System.Text.Encoding.ASCII.GetString(value) + " ";
+                BluetoothHelperCharacteristic rxC = new BluetoothHelperCharacteristic(UUID_RX);
+                rxC.setService(UUID);
 
-                    dataReceived.UpdateText(System.Text.Encoding.ASCII.GetString(value)); 
-                };
 
-                BluetoothHelperService service = new BluetoothHelperService(UUID);
-                service.addCharacteristic(new BluetoothHelperCharacteristic(UUID_TX));
+                bluetoothHelper.setRxCharacteristic(rxC);
+                bluetoothHelper.setTxCharacteristic(txC);
 
-                bluetoothHelper.Subscribe(service);
                 bluetoothHelper.ScanNearbyDevices();
-
             }
             catch (Exception ex)
             {

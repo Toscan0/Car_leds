@@ -37,8 +37,8 @@ const int LED = 22; // Could be different depending on the dev board. I used the
 // https://www.uuidgenerator.net/
 
 #define SERVICE_UUID           "6E400001-B5A3-F393-E0A9-E50E24DCCA9E" // UART service UUID
-#define CHARACTERISTIC_UUID_RX "6E400002-B5A3-F393-E0A9-E50E24DCCA9E"
-#define CHARACTERISTIC_UUID_TX "6E400003-B5A3-F393-E0A9-E50E24DCCA9E"
+#define CHARACTERISTIC_UUID_RX "6E400002-B5A3-F393-E0A9-E50E24DCCA9E" // receive characteristic from unity  arduino -> unity
+#define CHARACTERISTIC_UUID_TX "6E400003-B5A3-F393-E0A9-E50E24DCCA9E" //write characteristic from unity unity -> arduino
 
 
 class MyServerCallbacks: public BLEServerCallbacks {
@@ -104,14 +104,14 @@ void setup() {
 
   // Create a BLE Characteristic
   pTxCharacteristic = pService->createCharacteristic(
-										CHARACTERISTIC_UUID_TX,
+										CHARACTERISTIC_UUID_RX,
 										BLECharacteristic::PROPERTY_NOTIFY
 									);
                       
   pTxCharacteristic->addDescriptor(new BLE2902());
 
   BLECharacteristic * pRxCharacteristic = pService->createCharacteristic(
-											 CHARACTERISTIC_UUID_RX,
+											 CHARACTERISTIC_UUID_TX,
 											BLECharacteristic::PROPERTY_WRITE
 										);
 
