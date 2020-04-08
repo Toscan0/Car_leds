@@ -36,86 +36,6 @@ public class BLEManager : MonoBehaviour
         TryToConnect();
     }
 
-    private void OnScanEnded(LinkedList<BluetoothDevice> devices){
-        msg.text += "Found " + devices.Count + " ";
-
-        if (devices.Count == 0){
-            bluetoothHelper.ScanNearbyDevices();
-            return;
-        }
-            
-        try
-        {
-            bluetoothHelper.setDeviceName("ASTRA_K_LED_BLE");
-            bluetoothHelper.Connect();
-
-            msg.text += "Connecting ";
-        }catch(Exception ex)
-        {
-            exception.text += ex + " ";
-        }
-
-    }
-    
-     
-    void OnDestroy()
-    {
-        if (bluetoothHelper != null)
-            bluetoothHelper.Disconnect();
-    }
-    
-    public void MySendData(string s){ 
-        // need to concatunate the string, because c# reoder strings to optimize things
-
-        msg.text += "Trying to send ";
-
-        queue += s + "|";
-
-        sendNext();
-        
-        //BluetoothHelperCharacteristic ch = new BluetoothHelperCharacteristic(UUID_RX);
-        //ch.setService(UUID); //this line is mandatory!!!
-
-        //bluetoothHelper.WriteCharacteristic(ch, s); //send as string
-    }
-
-
-    private void sendNext()
-    {
-
-        if (awatingMsg || bluetoothHelper == null)
-            return;
-
-        Debug.Log(queue);
-       
-        int x = queue.IndexOf('|');
-        if(x <= 0) 
-        {
-            queue = "";
-            return;
-        }
-        string msgg = queue.Substring(0, x);
-        queue = queue.Substring(x + 1);
-        awatingMsg = true;
-
-        msg.text += "Sending  " + msgg; 
-
-        bluetoothHelper.SendData(msgg);
-    }
-
-    private void BluetoothHelper_OnDataReceived()
-    {
-        awatingMsg = false;
-        //msg.text += "Characteristic name: " + characteristic.getName() + " "
-        //           + System.Text.Encoding.ASCII.GetString(value) + " ";
-
-        dataReceived.UpdateText(bluetoothHelper.Read());
-
-        // send the next message only when the previous message response is received.
-        sendNext();
-        
-    }
-
     private void TryToConnect()
     {
         msg.text = "App started ";
@@ -169,6 +89,80 @@ public class BLEManager : MonoBehaviour
                 exception.text += ex + " ";
             }
         }
+    }
+
+    private void OnScanEnded(LinkedList<BluetoothDevice> devices){
+        msg.text += "Found " + devices.Count + " ";
+
+        if (devices.Count == 0){
+            bluetoothHelper.ScanNearbyDevices();
+            return;
+        }
+            
+        try
+        {
+            bluetoothHelper.setDeviceName("ASTRA_K_LED_BLE");
+            bluetoothHelper.Connect();
+
+            msg.text += "Connecting ";
+        }
+        catch (Exception ex)
+        {
+            exception.text += ex + " ";
+        }
+    }
+     
+    public void MySendData(string s){ 
+        msg.text += "Trying to send ";
+
+        // need to concatunate the string, because c# reoder strings to optimize things
+        queue += s + "|";
+
+        SendNext();
+    }
+
+
+    private void SendNext()
+    {
+
+        if (awatingMsg || bluetoothHelper == null)
+            return;
+
+        //Debug.Log(queue);
+       
+        int x = queue.IndexOf('|');
+        if(x <= 0) 
+        {
+            queue = "";
+            return;
+        }
+        string msgg = queue.Substring(0, x);
+        queue = queue.Substring(x + 1);
+        awatingMsg = true;
+
+        msg.text += "Sending  " + msgg; 
+
+        bluetoothHelper.SendData(msgg);
+    }
+
+    private void BluetoothHelper_OnDataReceived()
+    {
+        awatingMsg = false;
+
+        string aux = bluetoothHelper.Read();
+        Debug.Log(" Received: " +  aux);
+
+        dataReceived.UpdateText(aux);
+
+        // send the next message only when the previous message response is received.
+        SendNext();
+        
+    }
+
+    void OnDestroy()
+    {
+        if (bluetoothHelper != null)
+            bluetoothHelper.Disconnect();
     }
 
     public BluetoothHelper GetBluetoothHelper()
