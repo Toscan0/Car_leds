@@ -346,7 +346,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 134172081}
         m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
@@ -1123,7 +1123,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 444012900}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c0849fc78cf1a4479842dad6da9c13d, type: 3}
+  m_Script: {fileID: 11500000, guid: 97f6fe0aa7880be4eb798d319e133596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttons:
@@ -1909,7 +1909,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 566487930}
         m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
@@ -2487,7 +2487,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 444012902}
+      - m_Target: {fileID: 0}
         m_MethodName: SetID
         m_Mode: 0
         m_Arguments:
@@ -3199,7 +3199,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 444012902}
+      - m_Target: {fileID: 0}
         m_MethodName: ButtonToEdit
         m_Mode: 0
         m_Arguments:
@@ -3696,7 +3696,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1004601285}
         m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
@@ -4063,7 +4063,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1068577204}
         m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
@@ -4742,7 +4742,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1206152564}
         m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
@@ -5370,7 +5370,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1339296860}
         m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
@@ -5661,7 +5661,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1419926791}
         m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
@@ -6641,7 +6641,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 444012902}
+      - m_Target: {fileID: 0}
         m_MethodName: SetMsg
         m_Mode: 0
         m_Arguments:
@@ -8291,7 +8291,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2085918904}
         m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
@@ -8556,7 +8556,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2116100733}
         m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
