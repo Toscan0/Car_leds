@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using ArduinoBluetoothAPI;
 using UnityEngine;
 
-public class UIInput : MonoBehaviour
+public class BT_UIInput : MonoBehaviour
 {
 
     public BluetoothManager btManager;

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine;
 
 [RequireComponent(typeof(Text))]
-public class DataReceived : MonoBehaviour
+public class BT_DataReceived : MonoBehaviour
 {
     public BluetoothManager btManager;
     
