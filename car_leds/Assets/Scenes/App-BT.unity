@@ -7623,7 +7623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deviceName: ASTRA_K_BT_SERIAL
-  connectBT: 0
+  connectBT: 1
   exT: {fileID: 1237507144}
   debbugerMsg: {fileID: 643669815}
 --- !u!4 &1795442169
