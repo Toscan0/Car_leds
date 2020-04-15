@@ -346,7 +346,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 134172081}
+      - m_Target: {fileID: 0}
         m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
@@ -401,13 +401,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 134172076}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40dd61151a26dcb499c32fb9949c5866, type: 3}
+  m_Script: {fileID: 11500000, guid: 2af6565402d633b4b80562673cb25c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttonText: {fileID: 1063714988}
   btManager: {fileID: 1795442168}
-  ID: 127
-  msg: 127
+  ID: 128
+  msg: 128
 --- !u!1 &141896739
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,7 +917,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 425129246}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c85905f0951be2b408c488646097206b, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b08e5b547bb7ba44a83f60a4da6d4bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   btManager: {fileID: 1795442168}
@@ -1909,7 +1909,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 566487930}
+      - m_Target: {fileID: 0}
         m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
@@ -1964,7 +1964,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 566487925}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40dd61151a26dcb499c32fb9949c5866, type: 3}
+  m_Script: {fileID: 11500000, guid: 2af6565402d633b4b80562673cb25c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttonText: {fileID: 902619072}
@@ -2894,7 +2894,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 824642518}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1fe2c822316b1f4d93fc9f6469d376d, type: 3}
+  m_Script: {fileID: 11500000, guid: 17bc873031115924ba077a4c289e580e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   btManager: {fileID: 1795442168}
@@ -3696,7 +3696,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1004601285}
+      - m_Target: {fileID: 0}
         m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
@@ -3751,7 +3751,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1004601280}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40dd61151a26dcb499c32fb9949c5866, type: 3}
+  m_Script: {fileID: 11500000, guid: 2af6565402d633b4b80562673cb25c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttonText: {fileID: 563853636}
@@ -4063,7 +4063,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1068577204}
+      - m_Target: {fileID: 0}
         m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
@@ -4118,7 +4118,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1068577199}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40dd61151a26dcb499c32fb9949c5866, type: 3}
+  m_Script: {fileID: 11500000, guid: 2af6565402d633b4b80562673cb25c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttonText: {fileID: 1720366157}
@@ -4658,7 +4658,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1187746027}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d15c837c7b611488824e56c3ea9edc, type: 3}
+  m_Script: {fileID: 11500000, guid: dcf33e770cf02794fad64f2eaa64db65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   btManager: {fileID: 1795442168}
@@ -4742,7 +4742,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1206152564}
+      - m_Target: {fileID: 0}
         m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
@@ -4797,13 +4797,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1206152559}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40dd61151a26dcb499c32fb9949c5866, type: 3}
+  m_Script: {fileID: 11500000, guid: 2af6565402d633b4b80562673cb25c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttonText: {fileID: 584954478}
   btManager: {fileID: 1795442168}
-  ID: 255
-  msg: 255
+  ID: 256
+  msg: 256
 --- !u!1 &1210468166
 GameObject:
   m_ObjectHideFlags: 0
@@ -5370,7 +5370,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1339296860}
+      - m_Target: {fileID: 0}
         m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
@@ -5425,7 +5425,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1339296855}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40dd61151a26dcb499c32fb9949c5866, type: 3}
+  m_Script: {fileID: 11500000, guid: 2af6565402d633b4b80562673cb25c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttonText: {fileID: 1774033277}
@@ -5593,7 +5593,7 @@ GameObject:
   - component: {fileID: 1419926790}
   - component: {fileID: 1419926789}
   - component: {fileID: 1419926788}
-  - component: {fileID: 1419926792}
+  - component: {fileID: 1419926791}
   m_Layer: 5
   m_Name: Button (8)
   m_TagString: Untagged
@@ -5661,7 +5661,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1419926792}
+      - m_Target: {fileID: 0}
         m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
@@ -5707,7 +5707,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419926786}
   m_CullTransparentMesh: 0
---- !u!114 &1419926792
+--- !u!114 &1419926791
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5716,7 +5716,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1419926786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40dd61151a26dcb499c32fb9949c5866, type: 3}
+  m_Script: {fileID: 11500000, guid: 2af6565402d633b4b80562673cb25c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttonText: {fileID: 649372601}
@@ -7622,6 +7622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f8b5f2bbde43ee48b640c0bb658a0b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deviceName: ASTRA_K_BT_SERIAL
   connectBT: 1
   exT: {fileID: 1237507144}
   debbugerMsg: {fileID: 643669815}
@@ -8290,7 +8291,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2085918904}
+      - m_Target: {fileID: 0}
         m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
@@ -8345,7 +8346,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2085918899}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40dd61151a26dcb499c32fb9949c5866, type: 3}
+  m_Script: {fileID: 11500000, guid: 2af6565402d633b4b80562673cb25c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttonText: {fileID: 1536540951}
@@ -8555,7 +8556,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2116100733}
+      - m_Target: {fileID: 0}
         m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
@@ -8610,7 +8611,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2116100728}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40dd61151a26dcb499c32fb9949c5866, type: 3}
+  m_Script: {fileID: 11500000, guid: 2af6565402d633b4b80562673cb25c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttonText: {fileID: 1761462719}
