@@ -4,7 +4,7 @@ using ArduinoBluetoothAPI;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class ButtonProperties : MonoBehaviour
+public class UIButtons : MonoBehaviour
 {
     public Text buttonText;
     public BluetoothManager btManager;
