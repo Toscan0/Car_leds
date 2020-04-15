@@ -29,7 +29,7 @@ public class EditButtons : MonoBehaviour
     {
         Button buttonChosen = buttons[buttonToEdit];
 
-        UIButton bp = buttonChosen.GetComponent<UIButton>();
+        BLE_UIButton bp = buttonChosen.GetComponent<BLE_UIButton>();
 
         inputID.text = bp.GetID();
         inputText.text = bp.GetMsg();
@@ -40,13 +40,13 @@ public class EditButtons : MonoBehaviour
     {
         Button buttonChosen = buttons[buttonToEdit];
 
-        buttonChosen.GetComponent<UIButton>().SetMsg(s);
+        buttonChosen.GetComponent<BLE_UIButton>().SetMsg(s);
     }
 
     public void SetID(string s)
     {
         Button buttonChosen = buttons[buttonToEdit];
 
-        buttonChosen.GetComponent<UIButton>().SetID(s);
+        buttonChosen.GetComponent<BLE_UIButton>().SetID(s);
     }
 }

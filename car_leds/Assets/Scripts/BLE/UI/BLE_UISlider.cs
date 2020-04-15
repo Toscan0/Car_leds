@@ -4,7 +4,7 @@ using ArduinoBluetoothAPI;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class UISlider : MonoBehaviour
+public class BLE_UISlider : MonoBehaviour
 {
     public BLEManager BLEManager;
     public Text text;

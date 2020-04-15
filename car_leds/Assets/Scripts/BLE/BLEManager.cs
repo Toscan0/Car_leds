@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class BLEManager : MonoBehaviour
 {
-    public DataReceived dataReceived;
+    public BLE_DataReceived BLE_dataReceived;
 
     public Text msg;
     public Text exception;
@@ -152,7 +152,7 @@ public class BLEManager : MonoBehaviour
         string aux = bluetoothHelper.Read();
         Debug.Log(" Received: " +  aux);
 
-        dataReceived.UpdateText(aux);
+        BLE_dataReceived.UpdateText(aux);
 
         // send the next message only when the previous message response is received.
         SendNext();

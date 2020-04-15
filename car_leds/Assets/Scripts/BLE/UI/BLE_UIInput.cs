@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using ArduinoBluetoothAPI;
 using UnityEngine;
 
-public class UIInput : MonoBehaviour
+public class BLE_UIInput : MonoBehaviour
 {
 
     public BLEManager BLEManager;
