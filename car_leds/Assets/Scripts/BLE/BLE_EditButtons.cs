@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using System;
 
-public class EditButtons : MonoBehaviour
+public class BLE_EditButtons : MonoBehaviour
 {
     public Button[] buttons;
 
